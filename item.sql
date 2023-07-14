@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2023 at 10:31 AM
+-- Generation Time: Jul 14, 2023 at 06:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,7 +34,8 @@ CREATE TABLE `item` (
   `item_type` varchar(100) NOT NULL,
   `price` float NOT NULL,
   `rarity` tinyint(1) NOT NULL,
-  `game` varchar(100) NOT NULL
+  `game` varchar(100) NOT NULL,
+  `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
