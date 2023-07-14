@@ -39,7 +39,7 @@
           </ul>
           <ul class="navbar-nav ms-auto"> 
             <li class="nav-item">
-              <a class="btn btn-dark" href="signout.php" role="button">Signout</a>
+              <a class="btn btn-dark" href="signout.php" role="button">Sign out</a>
             </li>
           </ul>
         </div>
