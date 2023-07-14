@@ -1,3 +1,4 @@
+<?php include "validate_signin.php";?>
 <!DOCTYPE html>
 <!-- saved from url=(0051)https://getbootstrap.com/docs/5.3/examples/sign-in/ -->
 <html lang="en" data-bs-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -100,6 +101,9 @@
       .bd-mode-toggle {
         z-index: 1500;
       }
+      .error{
+        color: red;
+      }
     </style>
 
     
@@ -155,20 +159,35 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form>
+  <form method="post">
     <img class="mb-4" src="./image/bootstrap-logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+      name="eou"
+      value=<?php echo $_POST['eou'] ?? null?>>
+      <label for="floatingInput">
+        <?php echo $error['eou'] ?: "Username or Email";?>
+      </label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+      name="password"
+      value=<?php echo $_POST['password'] ?? null?>>
+      <label for="floatingPassword">
+        <?php echo $error['password'] ?: "Password";?>
+      </label>
     </div>
 
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+    <button class="btn btn-primary w-100 py-2" type="submit" name="signin">Sign in</button>
+
+    <div class="text-center">
+        <?php
+          echo "<span class=error>" . $error['signin'] . "</span>";
+        ?>
+    </div>
+
     <div class="text-center">
       Don't have an account? <a href="signup.php">Signup</a>
     </div>

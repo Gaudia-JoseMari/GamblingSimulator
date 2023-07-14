@@ -5,11 +5,9 @@
     } else {
         if($_SESSION['signed_in'] == false) {
             header("Location: signin.php");
-        } else {
-            header("Location: home.php");
-        }
+        } 
     }
-    echo $_SESSION['username'];
+    // echo $_SESSION['username'];
 ?>
 
 <!doctype html>
@@ -41,7 +39,7 @@
           </ul>
           <ul class="navbar-nav ms-auto"> 
             <li class="nav-item">
-              <a class="btn btn-dark" href="logout.php" role="button">Logout</a>
+              <a class="btn btn-dark" href="signout.php" role="button">Signout</a>
             </li>
           </ul>
         </div>

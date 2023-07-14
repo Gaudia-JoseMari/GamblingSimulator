@@ -1,4 +1,5 @@
-<?php include "validate_signup.php"; ?>
+
+<?php include "validate_signin.php";?>
 <!DOCTYPE html>
 <!-- saved from url=(0051)https://getbootstrap.com/docs/5.3/examples/sign-in/ -->
 <html lang="en" data-bs-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -101,7 +102,7 @@
       .bd-mode-toggle {
         z-index: 1500;
       }
-      .error {
+      .error{
         color: red;
       }
     </style>
@@ -159,70 +160,11 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form method="post">
     <img class="mb-4" src="./image/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
-
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
-      name="email"
-      value=<?php echo $_POST['email'] ?? null;?>>
-      <label for="floatingInput">
-        <?php echo $error['email'] ?: "Email address";?>
-      </label>
-    </div>
-
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingUsername" placeholder="Username"
-      name="username"
-      value=<?php echo $_POST['username'] ?? null?>>
-      <label for="floatingPassword">
-        <?php echo $error['username'] ?: "Username";?>
-      </label>
-    </div>
-
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-      name="password"
-      value=<?php echo $_POST['password'] ?? null?>>
-      <label for="floatingPassword">
-        <?php echo $error['password'] ?: "Password";?>
-      </label>
-    </div>
-
-    <div class="form-floating">
-      <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password"
-      name="confirmPassword">
-      <label for="ConfirmPassword">
-        <?php echo $error['confirmPassword'] ?: "Confirm Password";?>
-      </label>
-    </div>
-
-    <div class="form-floating">
-      <input type="number" class="form-control" id="floatingInput" placeholder="Age"
-      name="age"
-      value=<?php echo $_POST['age'] ?? null?>
-      min="18"
-      max="100">
-      <label for="floatingInput">
-        <?php echo $error['age'] ?: "Age";?>
-      </label>
-    </div>
-
-    <div class="text-center">
-        <?php
-          echo "<span class=error>" . $error['signup'] . "</span>";
-        ?>
-    </div>
-
-    <button class="btn btn-primary w-100 py-2" type="submit" name="signup">Sign up</button>
-
-    <div class="text-center">
-        Already have an account? <a href="signin.php">Sign in</a>
-    </div>
-    <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
-    
-  </form>
+    <h1 class="h3 mb-3 fw-normal">Sign Up Successful!</h1>
+    <!-- <span class="text-center">Signup Success</span> -->
+    <a href="signin.php"><button class="btn btn-primary w-100 py-2">Sign in</button></a>
+    <!-- <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p> -->
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     
