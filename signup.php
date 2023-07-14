@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0051)https://getbootstrap.com/docs/5.3/examples/sign-in/ -->
-<html lang="en" data-bs-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./assets/color-modes.js.download"></script>
+<html lang="en" data-bs-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="./js/color-modes.js"></script>
 
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,7 +104,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="./assets/sign-in.css" rel="stylesheet">
+    <link href="./css/sign-in.css" rel="stylesheet">
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -155,7 +156,7 @@
     
 <main class="form-signin w-100 m-auto">
   <form>
-    <img class="mb-4" src="./assets/bootstrap-logo.svg" alt="" width="72" height="57">
+    <img class="mb-4" src="./image/bootstrap-logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
     <div class="form-floating">
