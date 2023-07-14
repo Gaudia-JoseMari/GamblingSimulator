@@ -172,6 +172,10 @@
       <label for="floatingPassword">Password</label>
     </div>
     <div class="form-floating">
+      <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
+      <label for="ConfirmPassword">Confirm Password</label>
+    </div>
+    <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="Age">
       <label for="floatingInput">Age</label>
     </div>
