@@ -19,7 +19,15 @@
               <div class="card h-100 w-100" style="border-radius: .5rem;">
                 <div class="row g-0">
                   <div class="col-md-4 gradient-custom text-center" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; background-color: #f4f5f7;">
-                    <img src="image/banner.jpg" alt="Avatar" class="img-fluid my-5" style="width: 200px;">
+                    <a href="#" id="editPictureButton"><img src="image/banner.jpg" alt="Avatar" class="img-fluid my-5" style="width: 200px;"></a>
+                    <div id="editPictureFormContainer" style="display: none;">
+                            <form id="editPictureForm">
+                              <div class="form-group mb-2">
+                                <input type="file" class="form-control" id="editPictureInput" name="newPicture">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                          </div>
                     <h5 style="color: black;">Balance</h5>
                     <p>1000000</p>
                   </div>

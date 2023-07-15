@@ -1,6 +1,14 @@
 
 // Edit button functionality
 document.addEventListener("DOMContentLoaded", function() {
+  const editPictureButton = document.getElementById('editPictureButton');
+  const editPictureFormContainer = document.getElementById('editPictureFormContainer');
+
+  editPictureButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    editPictureFormContainer.style.display = 'block';
+  });
+    
   const editUsernameButton = document.getElementById('editUsernameButton');
   const editUsernameFormContainer = document.getElementById('editUsernameFormContainer');
 
