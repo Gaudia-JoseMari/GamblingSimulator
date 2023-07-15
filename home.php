@@ -5,8 +5,6 @@
     } else {
         if($_SESSION['signed_in'] == false) {
             header("Location: signin.php");
-        } else {
-            header("Location: home.php");
         }
     }
     echo $_SESSION['username'];
