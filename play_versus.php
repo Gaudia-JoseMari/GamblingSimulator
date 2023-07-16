@@ -30,6 +30,10 @@ if (isset($_POST['case'])) {
         }
         $prices[$record['item_name']] = $record['image'];
     }
+    if ($_SESSION['credits'] < $caseprice) {
+        echo "<script>alert('Not enough credits!');</script>";
+        echo "<script>window.location.replace('choose_case_versus.php');</script>";
+    }
 }
 
 ?>
@@ -85,7 +89,7 @@ if (isset($_POST['case'])) {
                         <div class="col-3 border bg-light"><?php echo $_POST['case'];?></div>
                     </div>
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-1 border bg-light">$<?php echo $caseprice;?></div>
+                        <div class="col-3 border bg-light">$<?php echo $caseprice;?></div>
                     </div>
                 </div>
             </div>
@@ -100,7 +104,7 @@ if (isset($_POST['case'])) {
                         <div class="col-3 border bg-light"><?php echo $_POST['case'];?></div>
                     </div>
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-1 border bg-light">$<?php echo $caseprice;?></div>
+                        <div class="col-3 border bg-light">$<?php echo $caseprice;?></div>
                     </div>
                 </div>
             </div>
@@ -109,7 +113,7 @@ if (isset($_POST['case'])) {
 
         <div class="row gx-4 justify-content-center align-items-center">
 
-            <div class="col-6 border">
+            <div class="col-6">
                 <div class="flex-column text-center">
                     <div class="p-2">Total earnings:</div>
                     <div class="p-2">Current Price:</div>

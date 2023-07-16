@@ -30,6 +30,11 @@ if (isset($_POST['case'])) {
         }
         $prices[$record['item_name']] = $record['image'];
     }
+
+    if ($_SESSION['credits'] < $caseprice) {
+        echo "<script>alert('Not enough credits!');</script>";
+        echo "<script>window.location.replace('choose_case_versus.php');</script>";
+    }
 }
 
 ?>

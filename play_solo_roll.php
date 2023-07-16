@@ -67,6 +67,11 @@ if (isset($_POST['roll'])) {
             VALUES ('$_SESSION[user_id]', '$priceid', '$pricename')";
     $query = $conn->query($sql);
     $conn->close();
+
+    if ($_SESSION['credits'] < $caseprice) {
+        echo "<script>alert('Not enough credits!');</script>";
+        echo "<script>window.location.replace('choose_case_versus.php');</script>";
+    }
 }
 
 ?>

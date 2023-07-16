@@ -1,31 +1,8 @@
 <?php
 include "customFunctions.php";
 
-// include "dbconn.php";
-// $sql = "SELECT * FROM masteritem WHERE collection = 'CS20'";
-// $query = $conn->query($sql);
-// $conn->close();
-// $prices = array();
-// while ($record = $query->fetch_assoc()) {
-//     $prices[$record['item_name']] = $record['image'];
-// }
-// var_dump($pricesJS);
-
-$border = array(
-    "Consumer" => "border-light",
-    "Industrial" => "border-info-subtle",
-    "Mil-Spec" => "border-info",
-    "Restricted" => "border-success",
-    "Classified" => "border-primary",
-    "Covert" => "border-danger",
-    "Contraband" => "border-warning"
-);
-
-$rarity = "Covert";
-$case = "CS20";
-$caseimg = "CS20_Case.png";
-
 if (isset($_POST['roll'])) {
+    $case = $_POST['roll'];
     var_dump($_POST);
     include "dbconn.php";
     $sql = "SELECT * FROM masteritem WHERE collection = '$_POST[roll]'";
@@ -77,6 +54,11 @@ if (isset($_POST['roll'])) {
             VALUES ('$_SESSION[user_id]', '$priceid', '$pricename')";
     $query = $conn->query($sql);
     $conn->close();
+
+    if ($_SESSION['credits'] < $caseprice) {
+        echo "<script>alert('Not enough credits!');</script>";
+        echo "<script>window.location.replace('choose_case_versus.php');</script>";
+    }
 }
 
 ?>
@@ -154,7 +136,7 @@ if (isset($_POST['roll'])) {
 
         <div class="row gx-4 justify-content-center align-items-center">
 
-            <div class="col-6 border">
+            <div class="col-6">
                 <div class="flex-column text-center">
                     <div class="p-2">Total earnings:</div>
                     <div class="p-2">Current Price:</div>
