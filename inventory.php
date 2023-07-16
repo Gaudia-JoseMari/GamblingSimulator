@@ -1,20 +1,32 @@
 <?php
 include 'customFunctions.php';
-include 'validate_signin.php';
-// Retrieve items from the database
-$sql = "SELECT i.*, m.* FROM item i
-        INNER JOIN masteritem m ON i.masteritem_id = m.masteritem_id
-        WHERE user_id = '$_SESSION[user_id]'";
-$result = $conn->query($sql);
-
 if (isset($_POST['sell'])) {
+    $item_id = $_POST['sell'];
+    include 'dbconn.php';
+
     $sql = "UPDATE item
             SET user_id = 0
-            WHERE item_id = '$_POST[sell]'";
+            WHERE item_id = '$item_id'";
     $query = $conn->query($sql);
+    
+    $sql = "SELECT * FROM item WHERE item_id = '$item_id'";
+    $query = $conn->query($sql);
+    $record = $query->fetch_assoc();
+    $item_id = $record['masteritem_id'];
+
+    $sql = "SELECT * FROM masteritem WHERE masteritem_id = '$item_id'";
+    $query = $conn->query($sql);
+    $record = $query->fetch_assoc();
+    $item_price = $record['price'];
+
+    $sql = "UPDATE user
+            SET credits = credits + '$item_price'
+            WHERE user_id = '$_SESSION[user_id]'";
+    $query = $conn->query($sql);
+
     $conn->close();
-    header("Location: inventory.php");
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,29 +48,37 @@ if (isset($_POST['sell'])) {
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
             <?php
             // Display the items dynamically
+            include 'dbconn.php';
+            $sql = "SELECT i.*, m.* FROM item i
+                INNER JOIN masteritem m ON i.masteritem_id = m.masteritem_id
+                WHERE user_id = '$_SESSION[user_id]'";
+            $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     ?>
-                    <div class="col">
-                        <div class="card">
-                            <img src="image/skins/Cases/<?php echo $row['collection'] . "/" . $row['image']; ?>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $row['item_name']; ?></h5>
-                                <p class="card-text"><?php echo $row['rarity']; ?></p>
-                                <p class="card-text">
-                                    <small class="text-body-secondary"><?php echo $row['price']; ?></small>
-                                </p>
-                                <form method="post">
-                                    <a type="submit" name="sell" value="<?php echo $row['item_id'];?>" class="btn btn-primary" role="button">Sell</a>
-                                </form>
+                    <form action="" method="post">
+                        <div class="col">
+                            <div class="card">
+                                <?php
+                                ?>
+                                <img src="image/skins/Cases/<?php echo $row['collection'] . "/" . $row['image']; ?>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $row['item_name']; ?></h5>
+                                    <p class="card-text"><?php echo $row['rarity']; ?></p>
+                                        <button type="submit" name="sell" value="<?php echo $row['item_id'];?>" class="btn btn-primary">Sell</button>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary"><?php echo $row['price']; ?></small>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <?php
                 }
             } else {
                 echo "No items found.";
             }
+            $conn -> close();
             ?>
         </div>
     </div>

@@ -1,5 +1,8 @@
 <?php
 session_start();
+include 'dbconn.php';
+$sql = "SELECT * FROM user WHERE user_id = '$_SESSION[user_id]'";
+$_SESSION['credits'] = $conn->query($sql)->fetch_assoc()['credits'];
 function navbar()
 {
     ?>
