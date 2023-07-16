@@ -105,19 +105,35 @@ if (isset($_POST['roll'])) {
     <div class="container">
         <div class="price p-4 row justify-content-center align-items-center">
 
-            <div class="text-center">
-                <img id="skin" src="image/skins/Cases/<?php echo $case . '/' . $caseimg; ?>">
+            <div class="col-4">
+                <div class="text-center">
+                    <img id="skin" src="image/Cases/<?php echo $caseimg; ?>">
+                </div>
+
+                <div class="container text-center">
+                    <div class="d-flex justify-content-center p-2">
+                        <div class="col-3 border bg-light"><?php echo $_POST['case'];?></div>
+                    </div>
+                    <div class="d-flex justify-content-center p-2">
+                        <div class="col-1 border bg-light">$<?php echo $caseprice;?></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="container text-center">
-                <div class="d-flex justify-content-center p-2">
-                    <div class="col-3 border bg-light" id="item_name">CS20</div>
+            <div class="col-4">
+                <div class="text-center">
+                    <img id="skin" src="image/Cases/<?php echo $caseimg; ?>">
                 </div>
-                <div class="d-flex justify-content-center p-2">
-                    <div class="col-1 border bg-light" id="price">$179.022</div>
+
+                <div class="container text-center">
+                    <div class="d-flex justify-content-center p-2">
+                        <div class="col-3 border bg-light"><?php echo $_POST['case'];?></div>
+                    </div>
+                    <div class="d-flex justify-content-center p-2">
+                        <div class="col-1 border bg-light">$<?php echo $caseprice;?></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <div class="row gx-4 justify-content-center align-items-center">
 
