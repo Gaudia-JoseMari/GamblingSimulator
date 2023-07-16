@@ -1,5 +1,4 @@
 <?php include 'customFunctions.php';
-    session_start();
     if(!isset($_SESSION['signed_in'])) {
         header("Location: signin.php");
     } else {

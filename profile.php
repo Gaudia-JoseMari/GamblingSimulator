@@ -1,6 +1,5 @@
 <?php include 'customFunctions.php'; 
 include 'validate_signin.php'; 
-session_start();
     if(isset($_POST['upload'])) {
         $upload_path = $_FILES['newPicture']['tmp_name'];
         if($upload_path) {

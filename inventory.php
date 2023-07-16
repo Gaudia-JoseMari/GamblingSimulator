@@ -1,7 +1,6 @@
 <?php
 include 'customFunctions.php';
 include 'validate_signin.php';
-session_start();
 // Retrieve items from the database
 $sql = "SELECT i.*, m.rarity, m.price, m.image FROM item i
         INNER JOIN masteritem m ON i.masteritem_id = m.masteritem_id
