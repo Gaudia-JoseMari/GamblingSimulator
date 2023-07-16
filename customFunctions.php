@@ -28,12 +28,12 @@ function navbar()
                         <h6 class="me-2s" style="font-size: 30px; color: red;">$<?php echo $_SESSION['credits']; ?> </h6>
                             <h6 class="me-2s" style="font-size: 30px; margin-left: 10px;"><?php echo $_SESSION['username']; ?></h6>
                             <a href="profile.php">
-                                <img src="image/avatar/<?php echo $_SESSION['avatar']; ?>" alt="Avatar" style="width: 40px; clip-path: circle(); object-fit: contain;">
+                                <img src="image/avatar/<?php echo $_SESSION['avatar']; ?>" alt="Avatar" style="width: 40px; clip-path: circle(); object-fit: contain; margin-left: 10px;">
                             </a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-dark" href="signout.php" role="button">Sign out</a>
+                        <a class="btn btn-dark" href="signout.php" role="button" style="margin-left: 10px;">Sign out</a>
                     </li>
                 </ul>
             </div>
