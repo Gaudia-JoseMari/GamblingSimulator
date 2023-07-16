@@ -1,7 +1,5 @@
 <?php
 include "customFunctions.php";
-
-var_dump($_POST);
 $test = "message";
 
 $border = array(
@@ -15,14 +13,9 @@ $border = array(
 );
 
 $rarity = "Covert";
-$case = "CS20";
-
-if (isset($_POST['roll'])) {
-    header("location: play_solo_roll.php");
-    $test = "CHANGE";
-}
 
 if (isset($_POST['case'])) {
+    var_dump($_POST);
     include "dbconn.php";
     $sql = "SELECT * FROM masteritem WHERE collection = '$_POST[case]'";
     $query = $conn->query($sql);
@@ -32,11 +25,13 @@ if (isset($_POST['case'])) {
     while ($record = $query->fetch_assoc()) {
         if ($record['item_type'] == "Case"){
             $caseimg = $record['image'];
+            $caseprice = $record['price'];
             continue;
         }
         $prices[$record['item_name']] = $record['image'];
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,15 +76,15 @@ if (isset($_POST['case'])) {
         <div class="price p-4 row justify-content-center align-items-center">
 
             <div class="text-center">
-                <img id="skin" class="border <?php echo $border[$rarity]; ?>" src="image/Cases/<?php echo $caseimg; ?>">
+                <img id="skin" src="image/Cases/<?php echo $caseimg; ?>">
             </div>
 
             <div class="container text-center">
                 <div class="d-flex justify-content-center p-2">
-                    <div class="col-3 border bg-light">CS20</div>
+                    <div class="col-3 border bg-light"><?php echo $_POST['case'];?></div>
                 </div>
                 <div class="d-flex justify-content-center p-2">
-                    <div class="col-1 border bg-light">$179.022</div>
+                    <div class="col-1 border bg-light">$<?php echo $caseprice;?></div>
                 </div>
             </div>
         </div>
@@ -104,7 +99,7 @@ if (isset($_POST['case'])) {
 
                 <form action="play_solo_roll.php" method="post">
                     <div class="d-grid col-3 gap-1 mx-auto">
-                        <button name="roll" type="submit" class="btn btn-primary">Roll</button>
+                        <button name="roll" value="<?php echo $_POST['case'];?>" type="submit" class="btn btn-primary">Roll</button>
                     </div>
                 </form>
 

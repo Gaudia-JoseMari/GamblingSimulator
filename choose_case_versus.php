@@ -38,7 +38,7 @@ $result = $conn->query($sql);
                                 <p class="card-text">
                                     <small class="text-body-secondary"><?php echo $row['price']; ?></small>
                                 </p>
-                                <form action="play_solo.php" method="post">
+                                <form action="play_versus.php" method="post">
                                     <button type="submit" name="case" value="<?php echo $row['collection']?>"class="btn btn-primary" href="#" role="button">Open</button>
                                 </form>
                             </div>
