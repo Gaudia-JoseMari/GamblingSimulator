@@ -67,7 +67,7 @@ if (isset($_POST['sell'])) {
                                     <p class="card-text"><?php echo $row['rarity']; ?></p>
                                         <button type="submit" name="sell" value="<?php echo $row['item_id'];?>" class="btn btn-primary">Sell</button>
                                     <p class="card-text">
-                                        <small class="text-body-secondary"><?php echo $row['price']; ?></small>
+                                        <small class="text-body-secondary">$<?php echo $row['price']; ?></small>
                                     </p>
                                 </div>
                             </div>

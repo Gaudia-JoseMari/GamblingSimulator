@@ -98,7 +98,7 @@ if (isset($_POST['case'])) {
 
             <div class="col-6 border">
                 <div class="flex-column text-center">
-                    <div class="p-2">Total earnings:</div>
+                    <div class="p-2">Current Credits:<br><?php echo $_SESSION['credits'];?></div>
                     <div class="p-2">Current Price:</div>
                 </div>
 

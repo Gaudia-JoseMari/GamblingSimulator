@@ -135,7 +135,7 @@ if (isset($_POST['roll'])) {
 
             <div class="col-6 border">
                 <div class="flex-column text-center">
-                    <div class="p-2">Total earnings:</div>
+                    <div class="p-2">Current Credits:<br><?php echo $_SESSION['credits'];?></div>
                     <div class="p-2">Current Price:</div>
                 </div>
                 <form action="play_solo.php" method="post">
@@ -175,7 +175,7 @@ if (isset($_POST['roll'])) {
                                 var rimage = prices[rkey]['image'];
                                 var skin = document.getElementById("skin");
                                 document.getElementById("item_name").innerHTML = prices[rkey]['name'];
-                                document.getElementById("price").innerHTML = prices[rkey]['price'];
+                                document.getElementById("price").innerHTML = "$" + prices[rkey]['price'];
                                 var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
                                 skin.src = skinlink + rimage;
 
@@ -186,7 +186,7 @@ if (isset($_POST['roll'])) {
                                 clearInterval(interval);
                                     var price = prices[pricekey]['image'];
                                     document.getElementById("item_name").innerHTML = prices[pricekey]['name'];
-                                    document.getElementById("price").innerHTML = prices[pricekey]['price'];
+                                    document.getElementById("price").innerHTML = "$" + prices[pricekey]['price'];
                                     var skin = document.getElementById("skin");
                                     var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
                                     skin.src = skinlink + price;

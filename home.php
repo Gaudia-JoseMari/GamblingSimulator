@@ -63,7 +63,7 @@
     </div>
     <!-- Play Modal -->
     <div class="modal fade" id="playModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="playModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Play</h5>
@@ -71,23 +71,31 @@
           </div>
           <div class="modal-body">
             <div class="row justify-content-center">
-              <div class="col-4">
+              <div class="col-6">
                 <div class="card mb-3">
                   <img src="image/card.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">Single Player</h5>
                     <p class="card-text">Open cases by yourself just like in Counter Strike Global Offensive.</p>
-                    <a href="choose_case.php" class="btn btn-primary">Play</a>
+                    <div class="row justify-content-center">
+                      <div class="d-grid col-4 text-center">
+                        <a href="choose_case.php" class="btn btn-primary">Play</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-6">
                 <div class="card mb-3">
                   <img src="image/card2.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">Battle VS AI</h5>
                     <p class="card-text">Open cases against an AI opponent, with the highest points declared as the winner.</p>
-                    <a href="choose_case_versus.php" class="btn btn-primary">Play</a>
+                    <div class="row justify-content-center">
+                      <div class="d-grid col-4 text-center">
+                        <a href="choose_case_versus.php" class="btn btn-primary">Play</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

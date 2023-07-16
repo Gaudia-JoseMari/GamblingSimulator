@@ -138,8 +138,8 @@ if (isset($_POST['roll'])) {
 
             <div class="col-6">
                 <div class="flex-column text-center">
-                    <div class="p-2">Total earnings:</div>
-                    <div class="p-2">Current Price:</div>
+                    <div class="p-2">Current Credits:<br><?php echo $_SESSION['credits'];?></div>
+                    <div class="p-2"></div>
                 </div>
                 <form action="play_versus.php" method="post">
                     <div class="d-grid col-3 gap-1 mx-auto">
@@ -180,7 +180,7 @@ if (isset($_POST['roll'])) {
                                 var rimage = prices[rkey]['image'];
                                 var skin = document.getElementById("skin");
                                 document.getElementById("item_name").innerHTML = prices[rkey]['name'];
-                                document.getElementById("price").innerHTML = prices[rkey]['price'];
+                                document.getElementById("price").innerHTML = "$" + prices[rkey]['price'];
                                 var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
                                 skin.src = skinlink + rimage;
 
@@ -189,7 +189,7 @@ if (isset($_POST['roll'])) {
                                 var rimage = prices[rkey]['image'];
                                 var skin = document.getElementById("skinai");
                                 document.getElementById("item_name_ai").innerHTML = prices[rkey]['name'];
-                                document.getElementById("priceai").innerHTML = prices[rkey]['price'];
+                                document.getElementById("priceai").innerHTML = "$" + prices[rkey]['price'];
                                 var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
                                 skin.src = skinlink + rimage;
 
@@ -201,14 +201,14 @@ if (isset($_POST['roll'])) {
 
                                     var price = prices[pricekey]['image'];
                                     document.getElementById("item_name").innerHTML = prices[pricekey]['name'];
-                                    document.getElementById("price").innerHTML = prices[pricekey]['price'];
+                                    document.getElementById("price").innerHTML = "$" + prices[pricekey]['price'];
                                     var skin = document.getElementById("skin");
                                     var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
                                     skin.src = skinlink + price;
                                 
                                     price = prices[pricekeyai]['image'];
                                     document.getElementById("item_name_ai").innerHTML = prices[pricekeyai]['name'];
-                                    document.getElementById("priceai").innerHTML = prices[pricekeyai]['price'];
+                                    document.getElementById("priceai").innerHTML = "$" + prices[pricekeyai]['price'];
                                     var skin = document.getElementById("skinai");
                                     var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
                                     skin.src = skinlink + price;
