@@ -44,4 +44,3 @@ function navbar()
     </nav>
 <?php
 }
-?>
