@@ -55,11 +55,13 @@ if (isset($_POST['roll'])) {
         );
     }
     $pricesJS = json_encode($prices);
-    echo "<pre>";
-    var_dump($pricesJS);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($pricesJS);
+    // echo "</pre>";
     $rand = rand(0, count($prices) - 1);
-    $pricekey= array_keys($prices)[$rand];
+    $pricekey = array_keys($prices)[$rand];
+    $rand = rand(0, count($prices) - 1);
+    $pricekeyai = array_keys($prices)[$rand];
 }
 
 ?>
@@ -105,32 +107,32 @@ if (isset($_POST['roll'])) {
     <div class="container">
         <div class="price p-4 row justify-content-center align-items-center">
 
-            <div class="col-4">
+            <div class="col-6">
                 <div class="text-center">
-                    <img id="skin" src="image/Cases/<?php echo $caseimg; ?>">
+                    <img id="skin" src="image/skins/Cases/<?php echo $case . '/' . $caseimg; ?>">
                 </div>
 
                 <div class="container text-center">
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-3 border bg-light"><?php echo $_POST['case'];?></div>
+                        <div class="col-4 border bg-light" id="item_name"><?php echo $_POST['case'];?></div>
                     </div>
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-1 border bg-light">$<?php echo $caseprice;?></div>
+                        <div class="col-1 border bg-light" id="price">$<?php echo $caseprice;?></div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-6">
                 <div class="text-center">
-                    <img id="skin" src="image/Cases/<?php echo $caseimg; ?>">
+                    <img id="skinai" src="image/skins/Cases/<?php echo $case . '/' . $caseimg; ?>">
                 </div>
 
                 <div class="container text-center">
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-3 border bg-light"><?php echo $_POST['case'];?></div>
+                        <div class="col-4 border bg-light" id="item_name_ai"><?php echo $_POST['case'];?></div>
                     </div>
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-1 border bg-light">$<?php echo $caseprice;?></div>
+                        <div class="col-1 border bg-light" id="priceai">$<?php echo $caseprice;?></div>
                     </div>
                 </div>
             </div>
@@ -142,9 +144,9 @@ if (isset($_POST['roll'])) {
                     <div class="p-2">Total earnings:</div>
                     <div class="p-2">Current Price:</div>
                 </div>
-                <form action="play_solo.php" method="post">
+                <form action="play_versus.php" method="post">
                     <div class="d-grid col-3 gap-1 mx-auto">
-                        <button name="case" type="submit" class="btn btn-primary">Roll</button>
+                        <button name="case" value="<?php echo $_POST['roll'];?>" type="submit" class="btn btn-primary">Roll</button>
 
                         <!-- Modal after roll-->
                         <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -173,6 +175,8 @@ if (isset($_POST['roll'])) {
 
                             var prices = <?php echo $pricesJS;?>;
                             var pricekey = <?php echo $pricekey;?>;
+                            var pricekeyai = <?php echo $pricekeyai;?>;
+
                             interval = setInterval(function() {
                                 var rindex = Math.floor(Math.random() * Object.keys(prices).length);
                                 var rkey = Object.keys(prices)[rindex];
@@ -183,11 +187,21 @@ if (isset($_POST['roll'])) {
                                 var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
                                 skin.src = skinlink + rimage;
 
-                                console.log(rkey, ":", rimage);
-                            }, 20)
+                                var rindex = Math.floor(Math.random() * Object.keys(prices).length);
+                                var rkey = Object.keys(prices)[rindex];
+                                var rimage = prices[rkey]['image'];
+                                var skin = document.getElementById("skinai");
+                                document.getElementById("item_name_ai").innerHTML = prices[rkey]['name'];
+                                document.getElementById("priceai").innerHTML = prices[rkey]['price'];
+                                var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
+                                skin.src = skinlink + rimage;
+
+                                // console.log(rkey, ":", rimage);
+                            }, 30)
 
                             setTimeout(() => {
                                 clearInterval(interval);
+
                                     var price = prices[pricekey]['image'];
                                     document.getElementById("item_name").innerHTML = prices[pricekey]['name'];
                                     document.getElementById("price").innerHTML = prices[pricekey]['price'];
@@ -195,6 +209,12 @@ if (isset($_POST['roll'])) {
                                     var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
                                     skin.src = skinlink + price;
                                 
+                                    price = prices[pricekeyai]['image'];
+                                    document.getElementById("item_name_ai").innerHTML = prices[pricekeyai]['name'];
+                                    document.getElementById("priceai").innerHTML = prices[pricekeyai]['price'];
+                                    var skin = document.getElementById("skinai");
+                                    var skinlink = skin.src.substring(0, skin.src.lastIndexOf("/") + 1);
+                                    skin.src = skinlink + price;
                                 // var xhr = new XMLHttpRequest();
                                 // xhr.open('POST', 'test.php', true);
                                 // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
