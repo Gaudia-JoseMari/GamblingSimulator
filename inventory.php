@@ -2,11 +2,19 @@
 include 'customFunctions.php';
 include 'validate_signin.php';
 // Retrieve items from the database
-$sql = "SELECT i.*, m.rarity, m.price, m.image FROM item i
+$sql = "SELECT i.*, m.* FROM item i
         INNER JOIN masteritem m ON i.masteritem_id = m.masteritem_id
         WHERE user_id = '$_SESSION[user_id]'";
 $result = $conn->query($sql);
 
+if (isset($_POST['sell'])) {
+    $sql = "UPDATE item
+            SET user_id = 0
+            WHERE item_id = '$_POST[sell]'";
+    $query = $conn->query($sql);
+    $conn->close();
+    header("Location: inventory.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,14 +41,16 @@ $result = $conn->query($sql);
                     ?>
                     <div class="col">
                         <div class="card">
-                            <img src="image/skins/Cases/CS20/<?php echo $row['image']; ?>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                            <img src="image/skins/Cases/<?php echo $row['collection'] . "/" . $row['image']; ?>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $row['item_name']; ?></h5>
                                 <p class="card-text"><?php echo $row['rarity']; ?></p>
                                 <p class="card-text">
                                     <small class="text-body-secondary"><?php echo $row['price']; ?></small>
                                 </p>
-                                <a class="btn btn-primary" href="#" role="button">Sell</a>
+                                <form method="post">
+                                    <a type="submit" name="sell" value="<?php echo $row['item_id'];?>" class="btn btn-primary" role="button">Sell</a>
+                                </form>
                             </div>
                         </div>
                     </div>

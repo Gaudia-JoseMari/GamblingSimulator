@@ -1,16 +1,6 @@
 <?php
 include "customFunctions.php";
 
-// include "dbconn.php";
-// $sql = "SELECT * FROM masteritem WHERE collection = 'CS20'";
-// $query = $conn->query($sql);
-// $conn->close();
-// $prices = array();
-// while ($record = $query->fetch_assoc()) {
-//     $prices[$record['item_name']] = $record['image'];
-// }
-// var_dump($pricesJS);
-
 $border = array(
     "Consumer" => "border-light",
     "Industrial" => "border-info-subtle",
@@ -25,19 +15,16 @@ $rarity = "Covert";
 
 if (isset($_POST['roll'])) {
     var_dump($_POST);
-    $case = $_POST['roll'];
     include "dbconn.php";
+    $case = $_POST['roll'];
     $sql = "SELECT * FROM masteritem WHERE collection = '$_POST[roll]'";
     $query = $conn->query($sql);
-    $conn->close();
 
     $prices = array();
     while ($record = $query->fetch_assoc()) {
         if ($record['item_type'] == "Case") {
             $caseimg = $record['image'];
-            // echo "<pre>";
-            // var_dump($record);
-            // echo "</pre>";
+            $caseprice = $record['price'];
             continue;
         }
         array_push($prices,
@@ -57,8 +44,29 @@ if (isset($_POST['roll'])) {
     echo "<pre>";
     var_dump($pricesJS);
     echo "</pre>";
+
+    //reduce credits
+    $sql = "UPDATE user
+            SET credits = credits - $caseprice
+            WHERE user_id = '$_SESSION[user_id]'";
+    $query = $conn->query($sql);
+
+    $sql = "SELECT credits FROM user WHERE user_id = '$_SESSION[user_id]'";
+    $query = $conn->query($sql);
+    $record = $query->fetch_array();
+    $_SESSION['credits'] = $record['credits'];
+
     $rand = rand(0, count($prices) - 1);
     $pricekey= array_keys($prices)[$rand];
+
+    //add item to inventory
+    $priceid = $prices[$pricekey]['masterid'];
+    $pricename = $prices[$pricekey]['name'];
+    echo $prices[$pricekey]['masterid'];
+    $sql = "INSERT INTO item (user_id, masteritem_id, item_name)
+            VALUES ('$_SESSION[user_id]', '$priceid', '$pricename')";
+    $query = $conn->query($sql);
+    $conn->close();
 }
 
 ?>
