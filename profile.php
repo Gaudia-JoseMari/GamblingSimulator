@@ -1,5 +1,30 @@
 <?php include 'customFunctions.php'; 
+include 'validate_signin.php'; 
 session_start();
+    if(isset($_POST['upload'])) {
+        $upload_path = $_FILES['newPicture']['tmp_name'];
+        if($upload_path) {
+            // 2 - jpg, 3 - png
+            if(!(exif_imagetype($upload_path) == 2 || exif_imagetype($upload_path) == 3)) {
+                $error['upload'] = "<br>File must be a jpg/png<br>";
+            } else {
+                if(filesize($upload_path) > 4000000) {
+                    $error['upload'] = "<br>File size must be less than 4MB<br>";
+                } else {
+                    $filename = time() . $_FILES['newPicture']['name'];
+                    $upload = move_uploaded_file($upload_path, "image/avatar/" . $filename);
+                    if(!$upload) {
+                        $error['upload'] = "<br>file upload unsuccessful<br>";
+                    } else {
+                        $_SESSION['avatar'] = $filename;
+                        $sql = "UPDATE user SET avatar = '$filename' WHERE email = '$_SESSION[email]'";
+                        $query = $conn -> query($sql);
+                        $conn -> close();
+                    }
+                }
+            }
+        }
+    } 
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,17 +46,17 @@ session_start();
               <div class="card h-100 w-100" style="border-radius: .5rem;">
                 <div class="row g-0">
                   <div class="col-md-4 gradient-custom text-center" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; background-color: #f4f5f7;">
-                    <a href="#" id="editPictureButton"><img src="image/skins/m41.png" alt="Avatar" class="img-fluid my-5" style="min-width: 200px; max-width: 500px; clip-path: circle(); object-fit: cover;"></a>
+                    <a href="#" id="editPictureButton"><img src="image/avatar/<?php echo $_SESSION['avatar']; ?>" alt="Avatar" class="img-fluid my-5" style="min-width: 200px; max-width: 500px; clip-path: circle(); object-fit: cover;"></a>
                     <div id="editPictureFormContainer" style="display: none;">
-                            <form id="editPictureForm">
+                            <form method="post" enctype="multipart/form-data" id="editPictureForm">
                               <div class="form-group mb-2">
                                 <input type="file" class="form-control" id="editPictureInput" name="newPicture">
                               </div>
-                              <button type="submit" class="btn btn-primary">Save</button>
+                              <input type="submit" value="Upload" name="upload">
                             </form>
                           </div>
-                    <h5 style="color: black;">Balance</h5>
-                    <p>1000000</p>
+                    <h5 style="color: black;">Credits</h5>
+                    <p><?php echo $_SESSION['credits']; ?></p>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body p-4" style="height: 500px;">
@@ -54,7 +79,7 @@ session_start();
                         <div class="col-6 mb-3">
                           <h6>Age <a href="#" id="editAgeButton">Edit</a>
                           </h6>
-                          <p class="text-muted">12</p>
+                          <p class="text-muted"><?php echo $_SESSION['age']; ?></p>
                           <div id="editAgeFormContainer" style="display: none;">
                             <form id="editAgeForm">
                               <div class="form-group mb-2">

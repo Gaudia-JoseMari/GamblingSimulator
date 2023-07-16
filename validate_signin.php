@@ -37,7 +37,10 @@
 				$_SESSION['signed_in'] = true;
 				$_SESSION['email'] = $record['email'];
 				$_SESSION['username'] = $record['username'];
+                $_SESSION['avatar'] = $record['avatar'];
+                $_SESSION['credits'] = $record['credits'];
                 $_SESSION['user_id'] = $record['user_id'];
+                $_SESSION['age'] = $record['age'];
 				header("location: home.php");
 			} else {
 				$error['signin'] = "Invalid password!";

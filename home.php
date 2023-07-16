@@ -89,7 +89,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Battle VS AI</h5>
                     <p class="card-text">Open cases against an AI opponent, with the highest points declared as the winner.</p>
-                    <a href="#" class="btn btn-primary">Play</a>
+                    <a href="play_versus.php" class="btn btn-primary">Play</a>
                   </div>
                 </div>
               </div>
