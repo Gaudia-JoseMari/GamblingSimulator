@@ -77,7 +77,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Single Player</h5>
                     <p class="card-text">Open cases by yourself just like in Counter Strike Global Offensive.</p>
-                    <a href="play_solo.php" class="btn btn-primary">Play</a>
+                    <a href="choose_case.php" class="btn btn-primary">Play</a>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Battle VS AI</h5>
                     <p class="card-text">Open cases against an AI opponent, with the highest points declared as the winner.</p>
-                    <a href="play_versus.php" class="btn btn-primary">Play</a>
+                    <a href="choose_case_versus.php" class="btn btn-primary">Play</a>
                   </div>
                 </div>
               </div>

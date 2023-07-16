@@ -17,8 +17,8 @@ function navbar()
                             Games
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="play_solo.php">Single Player</a></li>
-                            <li><a class="dropdown-item" href="#">Battle VS AI</a></li>
+                            <li><a class="dropdown-item" href="choose_case.php">Single Player</a></li>
+                            <li><a class="dropdown-item" href="choose_case_versus.php">Battle VS AI</a></li>
                         </ul>
                     </li>
                 </ul>
