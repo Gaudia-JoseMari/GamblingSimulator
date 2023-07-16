@@ -15,12 +15,14 @@
                     Games
                     </a>
                     <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Case Opening</a></li>
+                    <li><a class="dropdown-item" href="play_solo.php">Single Player</a></li>
+                    <li><a class="dropdown-item" href="#">Battle VS AI</a></li>
                     </ul>
                 </li>
                 </ul>
                 <ul class="navbar-nav ms-auto"> 
                 <li class="nav-item">
+                <a href="profile.php"><img src="image/skins/nahida.png" alt="Avatar" style="width: 30px; clip-path: circle(); object-fit: contain;"></a>
                     <a class="btn btn-dark" href="signout.php" role="button">Sign out</a>
                 </li>
                 </ul>

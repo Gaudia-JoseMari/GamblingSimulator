@@ -79,7 +79,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Single Player</h5>
                     <p class="card-text">Open cases by yourself just like in Counter Strike Global Offensive.</p>
-                    <a href="#" class="btn btn-primary">Play</a>
+                    <a href="play_solo.php" class="btn btn-primary">Play</a>
                   </div>
                 </div>
               </div>

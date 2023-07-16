@@ -37,6 +37,7 @@
 				$_SESSION['signed_in'] = true;
 				$_SESSION['email'] = $record['email'];
 				$_SESSION['username'] = $record['username'];
+                $_SESSION['user_id'] = $record['user_id'];
 				header("location: home.php");
 			} else {
 				$error['signin'] = "Invalid password!";
