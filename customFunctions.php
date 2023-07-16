@@ -25,7 +25,8 @@ function navbar()
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <div class="d-flex align-items-center">
-                            <h6 class="me-2s" style="font-size: 30px;"><?php echo $_SESSION['username']; ?></h6>
+                            <h6 class="me-2s" style="font-size: 30px; color: red;">$<?php echo $_SESSION['credits']; ?> </h6>
+                            <h6 class="me-2s" style="font-size: 30px; margin-left: 10px;"> <?php echo $_SESSION['username']; ?></h6>
                             <a href="profile.php">
                                 <img src="image/avatar/<?php echo $_SESSION['avatar']; ?>" alt="Avatar" style="width: 40px; clip-path: circle(); object-fit: contain;">
                             </a>
