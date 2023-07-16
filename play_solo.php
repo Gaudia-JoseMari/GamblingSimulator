@@ -15,7 +15,6 @@ $border = array(
 $rarity = "Covert";
 
 if (isset($_POST['case'])) {
-    var_dump($_POST);
     include "dbconn.php";
     $sql = "SELECT * FROM masteritem WHERE collection = '$_POST[case]'";
     $query = $conn->query($sql);
@@ -46,6 +45,7 @@ if (isset($_POST['case'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="image/icon.png" />
 </head>
 <style>
     .price {
@@ -96,7 +96,7 @@ if (isset($_POST['case'])) {
 
         <div class="row gx-4 justify-content-center align-items-center">
 
-            <div class="col-6 border">
+            <div class="col-6">
                 <div class="flex-column text-center">
                     <div class="p-2">Current Credits:<br><?php echo $_SESSION['credits'];?></div>
                     <div class="p-2">Current Price:</div>

@@ -146,7 +146,7 @@ if (isset($_POST['roll'])) {
 
         <div class="row gx-4 justify-content-center align-items-center">
 
-            <div class="col-6 border">
+            <div class="col-6">
                 <div class="flex-column text-center">
                     <div class="p-2">Current Credits:<br><?php echo $_SESSION['credits'];?></div>
                     <div class="p-2">Current Price:</div>
