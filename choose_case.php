@@ -36,7 +36,7 @@ $result = $conn->query($sql);
                                 <h5 class="card-title"><?php echo $row['item_name']; ?></h5>
                                 <p class="card-text"><?php echo $row['rarity']; ?></p>
                                 <p class="card-text">
-                                    <small class="text-body-secondary"><?php echo $row['price']; ?></small>
+                                    <small class="text-body-secondary">$<?php echo $row['price']; ?></small>
                                 </p>
                                 <form action="play_solo.php" method="post">
                                     <button type="submit" name="case" value="<?php echo $row['collection']?>"class="btn btn-primary" href="#" role="button">Open</button>
