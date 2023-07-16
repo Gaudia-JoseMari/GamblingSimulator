@@ -20,6 +20,8 @@ session_start();
                         $sql = "UPDATE user SET avatar = '$filename' WHERE email = '$_SESSION[email]'";
                         $query = $conn -> query($sql);
                         $conn -> close();
+                         header("Location: profile.php");
+    exit();
                     }
                 }
             }

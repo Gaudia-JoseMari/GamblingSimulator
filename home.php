@@ -7,7 +7,6 @@
             header("Location: signin.php");
         }
     }
-    echo $_SESSION['username'];
 ?>
 <!doctype html>
 <html lang="en">
