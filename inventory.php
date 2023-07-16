@@ -82,10 +82,14 @@ if (isset($_POST['sell'])) {
                                 <?php
                                 ?>
                                 <img src="image/skins/Cases/<?php echo $row['collection'] . "/" . $row['image']; ?>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
-                                <div class="card-body">
+                                <div class="card-body text-center">
                                     <h5 class="card-title"><?php echo $row['item_name']; ?></h5>
                                     <p class="card-text <?php echo $row['rarity'];?>"><?php echo $row['rarity']; ?></p>
-                                        <button type="submit" name="sell" value="<?php echo $row['item_id'];?>" class="btn btn-primary">Sell</button>
+                                        <div class="row justify-content-center">
+                                            <div class="d-grid col-6 text-center">
+                                                <button type="submit" name="sell" value="<?php echo $row['item_id'];?>" class="btn btn-primary">Sell</button>
+                                            </div>
+                                        </div>
                                     <p class="card-text">
                                         <small class="text-body-secondary">$<?php echo $row['price']; ?></small>
                                     </p>
