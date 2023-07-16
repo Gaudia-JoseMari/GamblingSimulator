@@ -188,7 +188,7 @@ $conn->close(); // Close the database connection
                 <div class="row g-0">
                   <div class="col-md-4 gradient-custom text-center" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; background-color: #f4f5f7;">
                     <a href="#" id="editPictureButton">
-                      <img src="image/avatar/<?php echo $_SESSION['avatar']; ?>" alt="Avatar" class="img-fluid my-5" style="min-width: 200px; max-width: 500px; clip-path: circle(); object-fit: contain;">
+                      <img src="image/avatar/<?php echo $_SESSION['avatar']; ?>" alt="Avatar" class="img-fluid my-5" style="width: 200px; width: 200px; clip-path: circle(); object-fit: cover;">
                     </a>
                     <div id="editPictureFormContainer" style="display: none;">
                       <form method="post" enctype="multipart/form-data" id="editPictureForm">
