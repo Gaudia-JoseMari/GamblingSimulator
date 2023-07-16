@@ -14,7 +14,6 @@ $border = array(
 $rarity = "Covert";
 
 if (isset($_POST['roll'])) {
-    var_dump($_POST);
     include "dbconn.php";
     $case = $_POST['roll'];
     $sql = "SELECT * FROM masteritem WHERE collection = '$_POST[roll]'";
@@ -41,9 +40,6 @@ if (isset($_POST['roll'])) {
         );
     }
     $pricesJS = json_encode($prices);
-    echo "<pre>";
-    var_dump($pricesJS);
-    echo "</pre>";
 
     //reduce credits
     $sql = "UPDATE user
@@ -62,7 +58,6 @@ if (isset($_POST['roll'])) {
     //add item to inventory
     $priceid = $prices[$pricekey]['masterid'];
     $pricename = $prices[$pricekey]['name'];
-    echo $prices[$pricekey]['masterid'];
     $sql = "INSERT INTO item (user_id, masteritem_id, item_name)
             VALUES ('$_SESSION[user_id]', '$priceid', '$pricename')";
     $query = $conn->query($sql);
@@ -108,6 +103,24 @@ if (isset($_POST['roll'])) {
         max-width: 400ch;
         overflow-y: auto;
     }
+    .Industrial {
+        color: #6496d4;
+    }
+    .Mil-spec {
+        color: #5e98d9;
+    }
+    .Restricted {
+        color: #4b69ff;
+    }
+    .Classified {
+        color: #8847ff;
+    }
+    .Covert {
+        color: #d32ce6;
+    }
+    .Contraband {
+        color: #eb4b4b;
+    }
 </style>
 
 <body>
@@ -150,7 +163,12 @@ if (isset($_POST['roll'])) {
                                         <h5 class="modal-title" id="exampleModalLabel">You Won</h5>
                                     </div>
                                     <div class="modal-body">
-                                        <p><?php echo $prices[$pricekey]['name']; ?></p>
+                                        <p class="text-center"><?php echo $prices[$pricekey]['name']; ?></p>
+                                        <img src="./image/skins/Cases/<?php echo $case . "/" . $prices[$pricekey]['image'];?>">
+                                        <div class="flex-column text-center">
+                                            <div class="p-2">$<?php echo $prices[$pricekey]['price']?></div>
+                                            <div class="p-2 <?php echo $prices[$pricekey]['rarity'];?>"><?php echo $prices[$pricekey]['rarity']?></div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <a href="home.php"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go home</button></a>

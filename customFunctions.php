@@ -5,7 +5,7 @@ $sql = "SELECT * FROM user WHERE user_id = '$_SESSION[user_id]'";
 $_SESSION['credits'] = $conn->query($sql)->fetch_assoc()['credits'];
 function navbar()
 {
-    ?>
+?>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="home.php">Gambling</a>
@@ -28,7 +28,7 @@ function navbar()
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <div class="d-flex align-items-center">
-                        <h6 class="me-2s" style="font-size: 30px; color: red;">$<?php echo $_SESSION['credits']; ?> </h6>
+                            <h6 class="me-2s" style="font-size: 30px; color: red;">$<?php echo $_SESSION['credits']; ?> </h6>
                             <h6 class="me-2s" style="font-size: 30px; margin-left: 10px;"><?php echo $_SESSION['username']; ?></h6>
                             <a href="profile.php">
                                 <img src="image/avatar/<?php echo $_SESSION['avatar']; ?>" alt="Avatar" style="width: 40px; height: 40px; clip-path: circle(); object-fit: cover; margin-left: 10px;">
@@ -42,5 +42,6 @@ function navbar()
             </div>
         </div>
     </nav>
-    <?php
+<?php
 }
+?>

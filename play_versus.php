@@ -15,7 +15,6 @@ $border = array(
 $rarity = "Covert";
 
 if (isset($_POST['case'])) {
-    var_dump($_POST);
     include "dbconn.php";
     $sql = "SELECT * FROM masteritem WHERE collection = '$_POST[case]'";
     $query = $conn->query($sql);
