@@ -115,7 +115,7 @@ if (isset($_POST['case'])) {
                     <div class="p-2">Current Price:</div>
                 </div>
 
-                <form action="play_solo_roll.php" method="post">
+                <form action="play_versus_roll.php" method="post">
                     <div class="d-grid col-3 gap-1 mx-auto">
                         <button name="roll" value="<?php echo $_POST['case'];?>" type="submit" class="btn btn-primary">Roll</button>
                     </div>
