@@ -22,11 +22,10 @@ $border = array(
 );
 
 $rarity = "Covert";
-$case = "CS20";
-$caseimg = "CS20_Case.png";
 
 if (isset($_POST['roll'])) {
     var_dump($_POST);
+    $case = $_POST['roll'];
     include "dbconn.php";
     $sql = "SELECT * FROM masteritem WHERE collection = '$_POST[roll]'";
     $query = $conn->query($sql);
