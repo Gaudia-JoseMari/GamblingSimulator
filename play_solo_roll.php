@@ -107,22 +107,24 @@ if (isset($_POST['roll'])) {
         overflow-y: auto;
     }
     .Industrial {
+        font-weight: 700;
         color: #6496d4;
     }
-    .Mil-spec {
+    .Mil-Spec {
+        font-weight: 700;
         color: #5e98d9;
     }
     .Restricted {
+        font-weight: 700;
         color: #4b69ff;
     }
     .Classified {
+        font-weight: 700;
         color: #8847ff;
     }
     .Covert {
+        font-weight: 700;
         color: #d32ce6;
-    }
-    .Contraband {
-        color: #eb4b4b;
     }
 </style>
 
@@ -139,10 +141,10 @@ if (isset($_POST['roll'])) {
 
             <div class="container text-center">
                 <div class="d-flex justify-content-center p-2">
-                    <div class="col-3 border bg-light" id="item_name">CS20</div>
+                    <div class="col-2 rounded border bg-light" id="item_name">CS20</div>
                 </div>
                 <div class="d-flex justify-content-center p-2">
-                    <div class="col-1 border bg-light" id="price">$179.022</div>
+                    <div class="col-1 rounded border bg-light" id="price">$179.022</div>
                 </div>
             </div>
         </div>
@@ -152,7 +154,6 @@ if (isset($_POST['roll'])) {
             <div class="col-6">
                 <div class="flex-column text-center">
                     <div class="p-2">Current Credits:<br><?php echo $_SESSION['credits'];?></div>
-                    <div class="p-2">Current Price:</div>
                 </div>
                 <form action="play_solo.php" method="post">
                     <div class="d-grid col-3 gap-1 mx-auto">
@@ -167,10 +168,10 @@ if (isset($_POST['roll'])) {
                                     </div>
                                     <div class="modal-body">
                                         <p class="text-center"><?php echo $prices[$pricekey]['name']; ?></p>
-                                        <img src="./image/skins/Cases/<?php echo $case . "/" . $prices[$pricekey]['image'];?>">
-                                        <div class="flex-column text-center">
+                                        <img class="img-fluid" src="./image/skins/Cases/<?php echo $case . "/" . $prices[$pricekey]['image'];?>">
+                                        <div class="row justify-content-center text-center">
                                             <div class="p-2">$<?php echo $prices[$pricekey]['price']?></div>
-                                            <div class="p-2 <?php echo $prices[$pricekey]['rarity'];?>"><?php echo $prices[$pricekey]['rarity']?></div>
+                                            <div class="p-1 col-3 rounded border <?php echo $prices[$pricekey]['rarity'];?>"><?php echo $prices[$pricekey]['rarity']?></div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

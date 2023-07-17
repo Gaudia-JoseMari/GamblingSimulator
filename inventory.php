@@ -42,22 +42,46 @@ if (isset($_POST['sell'])) {
 </head>
 <style>
     .Industrial {
+        font-weight: 700;
         color: #6496d4;
     }
-    .Mil-spec {
+    .Mil-Spec {
+        font-weight: 700;
         color: #5e98d9;
     }
     .Restricted {
+        font-weight: 700;
         color: #4b69ff;
     }
     .Classified {
+        font-weight: 700;
         color: #8847ff;
     }
     .Covert {
+        font-weight: 700;
         color: #d32ce6;
     }
-    .Contraband {
-        color: #eb4b4b;
+    .bg-Contraband {
+        background-color: #eb4b4b;
+    }
+    .bg-Industrial {
+        background-color: #6496d4;
+
+    }
+    .bg-Mil-spec {
+        background-color: #5e98d9;
+    }
+    .bg-Restricted {
+        background-color: #4b69ff;
+    }
+    .bg-Classified {
+        background-color: #8847ff;
+    }
+    .bg-Covert {
+        background-color: #d32ce6;
+    }
+    .bg-Contraband {
+        background-color: #eb4b4b;
     }
 </style>
 <body>
@@ -81,14 +105,14 @@ if (isset($_POST['sell'])) {
                 while ($row = $result->fetch_assoc()) {
                     ?>
                     <form action="" method="post">
-                        <div class="col">
+                        <div class="col bg-<?php echo $row['rarity'];?>">
                             <div class="card">
                                 <?php
                                 ?>
-                                <img src="image/skins/Cases/<?php echo $row['collection'] . "/" . $row['image']; ?>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
-                                <div class="card-body text-center">
+                                <img class="img-fluid" src="image/skins/Cases/<?php echo $row['collection'] . "/" . $row['image']; ?>" class="card-img-top" alt="...">
+                                <div class="card-body row justify-content-center text-center">
                                     <h5 class="card-title"><?php echo $row['item_name']; ?></h5>
-                                    <p class="card-text <?php echo $row['rarity'];?>"><?php echo $row['rarity']; ?></p>
+                                    <p class="card-text col-4 rounded border <?php echo $row['rarity'];?>"><?php echo $row['rarity']; ?></p>
                                         <div class="row justify-content-center">
                                             <div class="">Date Received</div>
                                             <div class="p-2"><?php echo $row['date_received'];?></div>

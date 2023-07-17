@@ -32,7 +32,7 @@ $result = $conn->query($sql);
                     ?>
                     <div class="col">
                         <div class="card">
-                            <img src="image/Cases/<?php echo $row['image']; ?>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+                            <img class="img-fluid" src="image/Cases/<?php echo $row['image']; ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $row['item_name']; ?></h5>
                                 <p class="card-text"><?php echo $row['rarity']; ?></p>

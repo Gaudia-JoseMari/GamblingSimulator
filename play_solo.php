@@ -86,10 +86,10 @@ if (isset($_POST['case'])) {
 
             <div class="container text-center">
                 <div class="d-flex justify-content-center p-2">
-                    <div class="col-3 border bg-light"><?php echo $_POST['case'];?></div>
+                    <div class="col-2 rounded border bg-light"><?php echo $_POST['case'];?></div>
                 </div>
                 <div class="d-flex justify-content-center p-2">
-                    <div class="col-1 border bg-light">$<?php echo $caseprice;?></div>
+                    <div class="col-1 rounded border bg-light">$<?php echo $caseprice;?></div>
                 </div>
             </div>
         </div>
@@ -98,8 +98,7 @@ if (isset($_POST['case'])) {
 
             <div class="col-6">
                 <div class="flex-column text-center">
-                    <div class="p-2">Current Credits:<br><?php echo $_SESSION['credits'];?></div>
-                    <div class="p-2">Current Price:</div>
+                    <div class="p-2">Current Credits:<br> $<?php echo $_SESSION['credits'];?></div>
                 </div>
 
                 <form action="play_solo_roll.php" method="post">

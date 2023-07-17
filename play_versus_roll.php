@@ -27,6 +27,7 @@ if (isset($_POST['roll'])) {
             )
         );
     }
+    $pricesJS = json_encode($prices);
 
     //reduce credits
     $sql = "UPDATE user
@@ -39,9 +40,9 @@ if (isset($_POST['roll'])) {
     $record = $query->fetch_array();
     $_SESSION['credits'] = $record['credits'];
 
-    $pricesJS = json_encode($prices);
     $rand = rand(0, count($prices) - 1);
     $pricekey = array_keys($prices)[$rand];
+    $pricename = $prices[$pricekey]['name'];
     $rand = rand(0, count($prices) - 1);
     $pricekeyai = array_keys($prices)[$rand];
 
@@ -96,22 +97,24 @@ if (isset($_POST['roll'])) {
         overflow-y: auto;
     }
     .Industrial {
+        font-weight: 700;
         color: #6496d4;
     }
-    .Mil-spec {
+    .Mil-Spec {
+        font-weight: 700;
         color: #5e98d9;
     }
     .Restricted {
+        font-weight: 700;
         color: #4b69ff;
     }
     .Classified {
+        font-weight: 700;
         color: #8847ff;
     }
     .Covert {
+        font-weight: 700;
         color: #d32ce6;
-    }
-    .Contraband {
-        color: #eb4b4b;
     }
 </style>
 
@@ -129,10 +132,10 @@ if (isset($_POST['roll'])) {
 
                 <div class="container text-center">
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-4 border bg-light" id="item_name"><?php echo $_POST['case'];?></div>
+                        <div class="col-4 rounded border bg-light" id="item_name"><?php echo $_POST['case'];?></div>
                     </div>
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-2 border bg-light" id="price">$<?php echo $caseprice;?></div>
+                        <div class="col-2 rounded border bg-light" id="price">$<?php echo $caseprice;?></div>
                     </div>
                 </div>
             </div>
@@ -144,20 +147,19 @@ if (isset($_POST['roll'])) {
 
                 <div class="container text-center">
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-4 border bg-light" id="item_name_ai"><?php echo $_POST['case'];?></div>
+                        <div class="col-4 rounded border bg-light" id="item_name_ai"><?php echo $_POST['case'];?></div>
                     </div>
                     <div class="d-flex justify-content-center p-2">
-                        <div class="col-2 border bg-light" id="priceai">$<?php echo $caseprice;?></div>
+                        <div class="col-2 rounded border bg-light" id="priceai">$<?php echo $caseprice;?></div>
                     </div>
                 </div>
             </div>
 
+    </div>
         <div class="row gx-4 justify-content-center align-items-center">
-
             <div class="col-6">
                 <div class="flex-column text-center">
-                    <div class="p-2">Current Credits:<br><?php echo $_SESSION['credits'];?></div>
-                    <div class="p-2"></div>
+                    <div class="p-2">Current Credits:<br>$<?php echo $_SESSION['credits'];?></div>
                 </div>
                 <form action="play_versus.php" method="post">
                     <div class="d-grid col-3 gap-1 mx-auto">
@@ -172,10 +174,10 @@ if (isset($_POST['roll'])) {
                                     </div>
                                     <div class="modal-body">
                                         <p class="text-center"><?php echo $prices[$pricekey]['name']; ?></p>
-                                        <img src="./image/skins/Cases/<?php echo $case . "/" . $prices[$pricekey]['image'];?>">
-                                        <div class="flex-column text-center">
+                                        <img class="img-fluid" src="./image/skins/Cases/<?php echo $case . "/" . $prices[$pricekey]['image'];?>">
+                                        <div class="row justify-content-center text-center">
                                             <div class="p-2">$<?php echo $prices[$pricekey]['price']?></div>
-                                            <div class="p-2 <?php echo $prices[$pricekey]['rarity'];?>"><?php echo $prices[$pricekey]['rarity']?></div>
+                                            <div class="p-2 col-3 rounded border <?php echo $prices[$pricekey]['rarity'];?>"><?php echo $prices[$pricekey]['rarity']?></div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -250,9 +252,6 @@ if (isset($_POST['roll'])) {
                 </form>
             </div>
         </div>
-
-
-    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
