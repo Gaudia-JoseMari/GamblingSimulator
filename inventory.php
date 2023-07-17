@@ -74,7 +74,8 @@ if (isset($_POST['sell'])) {
             include 'dbconn.php';
             $sql = "SELECT i.*, m.* FROM item i
                 INNER JOIN masteritem m ON i.masteritem_id = m.masteritem_id
-                WHERE user_id = '$_SESSION[user_id]'";
+                WHERE user_id = '$_SESSION[user_id]'
+                ORDER BY date_received DESC";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -89,7 +90,9 @@ if (isset($_POST['sell'])) {
                                     <h5 class="card-title"><?php echo $row['item_name']; ?></h5>
                                     <p class="card-text <?php echo $row['rarity'];?>"><?php echo $row['rarity']; ?></p>
                                         <div class="row justify-content-center">
-                                            <div class="d-grid col-6 text-center">
+                                            <div class="">Date Received</div>
+                                            <div class="p-2"><?php echo $row['date_received'];?></div>
+                                            <div class="d-grid col-4 text-center">
                                                 <button type="submit" name="sell" value="<?php echo $row['item_id'];?>" class="btn btn-primary">Sell</button>
                                             </div>
                                         </div>

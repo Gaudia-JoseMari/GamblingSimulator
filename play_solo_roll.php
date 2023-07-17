@@ -58,8 +58,10 @@ if (isset($_POST['roll'])) {
     //add item to inventory
     $priceid = $prices[$pricekey]['masterid'];
     $pricename = $prices[$pricekey]['name'];
-    $sql = "INSERT INTO item (user_id, masteritem_id, item_name)
-            VALUES ('$_SESSION[user_id]', '$priceid', '$pricename')";
+    date_default_timezone_set("Asia/Hong_Kong");
+    $date_received = date("Y-m-d H:i:s", time());
+    $sql = "INSERT INTO item (user_id, masteritem_id, item_name, date_received)
+            VALUES ('$_SESSION[user_id]', '$priceid', '$pricename', '$date_received')";
     $query = $conn->query($sql);
     $conn->close();
 
