@@ -64,11 +64,11 @@ if (isset($_POST['sell'])) {
     <?php navbar(); ?>
     <h1 class="text-center">Inventory</h1>
     <div class="container-fluid">
-        <h2>Total Balance:</h2>
+        <h2>Your Items:</h2>
     </div>
     <!-- Container with cards -->
     <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+        <div class="row gy-3 gx-3 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
             <?php
             // Display the items dynamically
             include 'dbconn.php';
