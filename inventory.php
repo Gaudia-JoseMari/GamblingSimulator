@@ -25,6 +25,7 @@ if (isset($_POST['sell'])) {
     $query = $conn->query($sql);
 
     $conn->close();
+    header("Location: inventory.php");
 }
 
 ?>
